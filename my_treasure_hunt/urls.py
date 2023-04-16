@@ -20,7 +20,7 @@ from members import views
 urlpatterns = [
    # path('',include('members.urls')),
     path('admin/', admin.site.urls),
-    path('home/',views.HomePage,name='home'),
+    path('',views.HomePage,name='home'),
     path('signup/',views.SignupPage,name='signup'),
     path('login/',views.LoginPage,name='login'),
  #   path('landingpage/',views.LandingPage,name='landingpage'),
