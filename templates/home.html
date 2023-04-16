@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Treasure Hunt Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url(background.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .jumbotron {
+            background-color: transparent;
+        }
+
+        .jumbotron h1,
+        .jumbotron p,
+        .jumbotron .btn-primary {
+            color: #000;
+            text-shadow: 1px 1px #25bbf2;
+        }
+
+        .card {
+            border: 2px solid #25bbf2;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: #25bbf2;
+            margin-bottom: 20px;
+        }
+
+        .card-text {
+            color: #000;
+            font-size: 18px;
+            font-family: Georgia, sans-serif;
+        }
+        body {
+    background-image:url("{%static 'background.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><b>KANUKO</b></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'home'%}">Home</a></li>
+                    <li><a href="{% url 'contact'%}">Contact</a></li>
+                    <li><a href="{% url 'login'%}">Login</a></li>
+                    <li><a href="{% url 'signup'%}">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Jumbotron -->
+    <div class="jumbotron text-center">
+        <h1>Welcome to Treasure Hunt!</h1>
+        <p>Find hidden treasures, solve puzzles and challenges to earn points and climb the leaderboard.</p>
+        <a href="{% url 'login'%}" class="btn btn-primary btn-lg">Play Now</a>
+    </div>
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Find Hidden Treasures</h4>
+                        <p class="card-text">Explore different locations and discover hidden treasures to earn points.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Solve Puzzles and Challenges</h4>
+                            <p class="card-text">Use your wit and problem-solving skills to
+                                solve puzzles and challenges that will test your intelligence and creativity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Climb the Leaderboard</h4>
+                            <p class="card-text">Earn points by finding treasures and solving challenges to climb the leaderboard and compete with other players.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="text-center">
+            <a href="#"><span class="glyphicon glyphicon-chevron-up"></span>Back to top</a>
+            <p>Treasure Hunt Game &copy; 2023</p>
+        </footer>
+        <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>        

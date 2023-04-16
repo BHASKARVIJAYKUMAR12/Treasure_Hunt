@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Treasure Hunt Registration</title>
+    <link rel="stylesheet" type="text/css" href="style_registration.css">
+  </head>
+  <body>
+    <header>
+      <h1>Treasure Hunt Registration</h1>
+    </header>
+    {% endfor %} {% endcomment %}
+    <main>
+      <form action="" method="" id="registration-form">
+        {{form.as_p}}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit" value="Signup">Register</button>
+      </form>
+    </main>
+    <footer>
+      <p>&copy; 2023 Treasure Hunt</p>
+    </footer>
+    <script src="script_registration.js"></script>
+  </body>
+</html>

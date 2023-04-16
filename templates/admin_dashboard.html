@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Treasure Hunt - Admin Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .jumbotron {
+            background-color: #f1f1f1;
+        }
+        .btn-primary {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        .btn-primary:hover {
+            background-color: #3e8e41;
+            border-color: #3e8e41;
+        }
+        .panel-primary > .panel-heading {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+        .panel-body a {
+            color: #333;
+            text-decoration: none;
+        }
+        .panel-body a:hover {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Treasure Hunt - Admin Dashboard</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
+                    <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Jumbotron -->
+    <div class="jumbotron text-center">
+        <h1>Welcome, Admin!</h1>
+        <p>Here's an overview of the Treasure Hunt game.</p>
+    </div>
+    
+    <!-- Game Overview -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Total Users</div>
+                    <div class="panel-body">
+                        <h1>246</h1>
+                        <a href="#">View details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Active Users</div>
+                    <div class="panel-body">
+                        <h1>82</h1>
+                        <a href="#">View details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Completed Users</div>
+                    <div class="panel-body">
+                        <h1>164</h1>
+                        <a href="#">View details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Total Points Earned</div>
+                    <div class="panel-body">
+                        <h1>5,876</h1>
+                        <a href="#">View details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Most Active User</div>
+                    <div class="panel-body">
+                        <h1>John Doe</h1>
+                        <a href="#">View profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Leaderboard</div>
+                    <div class="panel-body">
+                        <ol>
+                            <li><a href="#">John Doe</a></li>
+                            <li><a href="#">Jane Doe</a></li>
+                            <li><a href="#">Bob Smith</a></li>
+                            <li><a href="#">Sara Johnson</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
+    

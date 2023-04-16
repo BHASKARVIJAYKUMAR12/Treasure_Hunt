@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Treasure Hunt Registration</title>
+    <!--link rel="stylesheet" type="text/css" href="style_registration.css"-->
+  </head>
+  <style>
+    /* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /* Header Styles */
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* Main Styles */
+  main {
+    padding: 2rem;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  form input {
+    display: block;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+  }
+  
+  button[type="submit"] {
+    background-color: #f2c94c;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #ffdb8a;
+  }
+  
+  /* Footer Styles */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+  }
+    </style>
+    <script>
+      const form = document.querySelector("#registration-form");
+    form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  const name = document.querySelector("#name").value;
+  const email = document.querySelector("#email").value;
+  const password1 = document.querySelector("#password1").value;
+  const password2 = document.querySelector("#password2").value;
+  // Do something with the form data, such as send it to a server
+  console.log(name, email, password1,password2);
+});
+    </script>
+  <body>
+    <header>
+      <h1>Treasure Hunt Registration</h1>
+    </header>
+    <main>
+      <form action="" method="post" id="registration-form">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password1" name="password1" required>
+        <label for="password">Confirm Password:</label>
+        <input type="password" id="password2" name="password2" required>
+        <button type="submit" value="signup">Register</button>
+
+      </form>
+    </main>
+    <footer>
+      <p>&copy; 2023 Treasure Hunt</p>
+    </footer>
+    <!--script src="script_registration.js"></script-->
+  </body>
+</html>

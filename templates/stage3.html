@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stage-3</title>
+	<style>
+		.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+		body {
+			background-color: #f9f9f9;
+			font-family: Arial, sans-serif;
+			color: #333;
+			padding: 20px;
+		}
+		h1 {
+			font-size: 36px;
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+		p {
+			font-size: 18px;
+			margin-bottom: 20px;
+		}
+		label {
+			display: block;
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+		input[type="text"] {
+			font-size: 18px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			margin-bottom: 20px;
+			width: 100%;
+			max-width: 500px;
+		}
+		button {
+			font-size: 18px;
+			padding: 10px 20px;
+			background-color: #333;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #666;
+		}
+		.correct {
+			color: green;
+		}
+		.incorrect {
+			color: red;
+		}
+		#nextBtn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 12px 24px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#nextBtn:hover {
+  background-color: #3e8e41;
+}
+	</style>
+</head>
+<body onload="startTimer()">
+	<div class="container">
+	<h1>Stage 3- Riddle Solving</h1>
+	<p>You have reached the library. To proceed to the next stage of the treasure hunt, you must solve the following riddle:</p>
+	<p><b>I'm what you sow but not what you reap,<br>
+        My golden waves sway in the breeze,<br>
+        With me you may make your daily food,<br>
+        Without me, you'd be quite misled. What am I?</b></p>
+		<h6><p>NOTE:Answer in Capital letters only</p></h6>
+	<form onsubmit="return checkAnswer()">
+		<label for="answer">Enter your answer:</label>
+		<input type="text" id="answer" name="answer">
+		<button type="submit">Submit</button>
+		<button id="nextBtn" onclick="goToNextStage()">Next Stage</button>
+	</form>
+	<div id="result">
+		<div id="stage3">
+			<p><span id="timer"></span></p>
+			<p><span id="attemptsLeft"></span></p>
+			<p><span id="submit"></span></p>
+
+		  </div>
+	</div>
+	</div>
+	<script>
+		var attempts = 0;
+var maxAttempts = 2;
+var timer = null;
+var time = 0;
+var timerRunning = false;
+
+function checkAnswer() {
+    attempts++;
+    var answer = document.getElementById("answer");
+    var result = document.getElementById("result");
+    var attemptsLeft = document.getElementById("attemptsLeft");
+    var attemptCount = maxAttempts - attempts + 1;
+    if (answer.value === "WHEAT") {
+        result.innerHTML = "<p class='correct'>Correct! You may proceed to the next stage.</p>";
+        document.getElementById("nextBtn").style.display = "block";
+        if (timerRunning) {
+            stopTimer();
+        }
+       return false;
+    } else {
+        if (attempts >= maxAttempts) {
+            attemptCount = 0;
+            result.innerHTML = "<p class='incorrect'>Incorrect. You have no attempts left.</p>";
+            if (timerRunning) {
+                stopTimer();
+            }
+         return false;
+        } else {
+          //  attemptsLeft.textContent = attemptCount + " attempts left";
+            result.innerHTML = "<p class='incorrect'>Incorrect. You have " + attemptCount + "nd attempts left. Please try again.</p>";
+            document.getElementById("answer").value = "";
+            startTimer();
+           return false;
+        }
+    }
+    return false;
+}
+
+function startTimer() {
+    if (!timerRunning) {
+        timer = setInterval(updateTimer, 1000);
+        timerRunning = true;
+    }
+}
+
+function updateTimer() {
+    var minutes = Math.floor(time / 60);
+    var seconds = time % 60;
+    document.getElementById("timer").innerHTML = "Time Taken: " + minutes + " minutes " + seconds + " seconds";
+    time++;
+}
+
+function stopTimer() {
+    clearInterval(timer);
+    timerRunning = false;
+}
+
+function goToNextStage() {
+    window.location.href = "{% url 'stage4'%}";
+}
+
+window.onload = function() {
+    var attemptsLeft = document.getElementById("attemptsLeft");
+    attemptsLeft.textContent = maxAttempts + " attempts left";
+    startTimer();
+};
+	</script>
+</body>
+</html>

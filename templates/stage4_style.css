@@ -1,0 +1,36 @@
+body {
+	background-image: url('park-background.jpg');
+	background-size: cover;
+	background-position: center;
+	font-family: Arial, sans-serif;
+	color: #fff;
+}
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 50px;
+	text-align: center;
+	position: relative;
+}
+h1 {
+	font-size: 48px;
+	margin-top: 0;
+}
+h2 {
+	font-size: 36px;
+	margin-top: 0;
+	margin-bottom: 30px;
+}
+.clue {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgba(0,0,0,0.7);
+	padding: 20px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.clue:hover {
+	background-color: rgba(0,0,0,0.9);
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Treasure Hunt Route Map</title>
+	<style>
+		body {
+			background-image: url('route-map-bg.jpg');
+			background-size: cover;
+			background-position: center;
+			font-family: Arial, sans-serif;
+			color: #fff;
+		}
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 50px;
+			text-align: center;
+		}
+		h1 {
+			font-size: 48px;
+			margin-top: 0;
+		}
+		h2 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 30px;
+		}
+		.stage {
+			position: absolute;
+			background-color: rgba(0,0,0,0.7);
+			padding: 20px;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+		.stage:hover {
+			background-color: rgba(0,0,0,0.9);
+		}
+		.stage-1 {
+			top: 33%;
+			left: 20%;
+		}
+		.stage-2 {
+			top: 60%;
+			left: 45%;
+		}
+		.stage-3 {
+			top: 20%;
+			left: 70%;
+		}
+		.stage-4 {
+			top: 80%;
+			left: 15%;
+		}
+		.stage-5 {
+			top: 5%;
+			left: 50%;
+		}
+/* CSS styling for the path */
+#path {
+        stroke: #FFD700; /* gold color */
+        stroke-width: 4px;
+        fill: none;
+        stroke-linecap: round;
+        stroke-dasharray: 5, 5;
+        animation: dash 5s linear infinite;
+      }
+      
+      /* CSS animation for the path */
+      @keyframes dash {
+        to {
+          stroke-dashoffset: -10;
+        }
+      }
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Treasure Hunt Route Map</h1>
+		<h2>Follow the route to find the treasure</h2>
+		<div class="stage stage-1" onclick="window.location.href='stage1.html'">
+			<h3>Stage 1</h3>
+			<p>Find the key in the old house</p>
+		</div>
+		<div class="stage stage-2" onclick="window.location.href='stage2.html'">
+			<h3>Stage 2</h3>
+			<p>Decode the message on the billboard</p>
+		</div>
+		<div class="stage stage-3" onclick="window.location.href='stage3.html'">
+			<h3>Stage 3</h3>
+			<p>Answer the riddle at the library</p>
+		</div>
+        <div class="stage stage-4" onclick="window.location.href='stage4.html'">
+			<h3>Stage 4</h3>
+			<p>Find the hidden clue in the park</p>
+		</div>
+		
+		<div class="stage stage-5" onclick="window.location.href='stage5.html'">
+			<h3>Stage 5</h3>
+			<p>Follow the trail in the woods</p>
+		</div>
+	</div>
+</body>
+</html>

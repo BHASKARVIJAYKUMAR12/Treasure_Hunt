@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Treasure Hunt Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="user_dashboard_style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Treasure Hunt Dashboard</h1>
+    </header>
+    <main>
+      <section id="progress">
+        <h2>Game Progress</h2>
+        <p>You have completed 4 out of 10 challenges.</p>
+        <progress value="4" max="10"></progress>
+      </section>
+      
+      <section id="analytics">
+        <h2>User Analytics</h2>
+        <ul>
+          <li>Time spent playing: 4 hours</li>
+          <li>Challenges completed: 4</li>
+          <li>Coins collected: 32</li>
+          <li>Average time per challenge: 1 hour</li>
+        </ul>
+      </section>
+      
+      <section id="data-analysis">
+        <h2>Data Analysis</h2>
+        <canvas id="game-stats"></canvas>
+      </section>
+      
+      <section id="leaderboard">
+        <h2>Leaderboard</h2>
+        <ol>
+          <li>John - 1000</li>
+          <li>Jane - 950</li>
+          <li>Mike - 800</li>
+          <li>Sara - 750</li>
+          <li>Tom - 600</li>
+        </ol>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Treasure Hunt</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

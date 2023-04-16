@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stage-2</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+			color: #333;
+		}
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 50px;
+			text-align: center;
+		}
+		h1 {
+			font-size: 48px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+		h2 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 30px;
+		}
+		.billboard {
+			display: inline-block;
+			position: relative;
+			margin-top: 30px;
+		}
+		.billboard img {
+			max-width: 80%;
+			height: auto;
+		}
+		.overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.5);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+			font-size: 24px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		.overlay:hover {
+			background-color: rgba(0,0,0,0.8);
+		}
+		#nextBtn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 12px 24px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#nextBtn:hover {
+  background-color: #3e8e41;
+}
+	</style>
+</head>
+<body onload="startTimer()" >
+	<div class="container">
+		<h2>Stage 2 - Decode the message on the billboard </h2>
+		<div class="billboard">
+			<img src="{%static 'billboard.jpg'%}" alt="Billboard with encoded message">
+			<br>
+            <br>
+            <form onsubmit="return checkAnswer()">
+				<h6><p>NOTE:Answer in Capital letters only</p></h6>
+			<label for="answer">Enter your answer:</label>
+			<input type="text" id="answer" name="answer">
+			<button type="submit">Submit</button>
+            <button id="nextBtn" onclick="goToNextStage()">Next Stage</button>
+            </form>
+		</div>
+		<div id="result">
+		<div id="stage2">
+			<!-- Your treasure hunt stage content here -->
+			<p><span id="timer"></span></p>
+            <p><span id="attemptsLeft"></span></p>
+            <p><span id="submit"></span></p>
+		</div>
+        </div>
+	</div>
+	<script>
+		var attempts = 0;
+var maxAttempts = 2;
+var timer = null;
+var time = 0;
+var timerRunning = false;
+
+function checkAnswer() {
+   // event.preventDefault();
+    attempts++;
+    var answer = document.getElementById("answer");
+    var result = document.getElementById("result");
+    var attemptsLeft = document.getElementById("attemptsLeft");
+    var attemptCount = maxAttempts - attempts + 1;
+    if (answer.value == "LAMIAN") {
+        result.innerHTML = "<p class='correct'>Correct! You may proceed to the next stage.</p>";
+        document.getElementById("nextBtn").style.display = "block";
+        if (timerRunning) {
+            stopTimer();
+        }
+        return false;
+    } else {
+        if (attempts >= maxAttempts) {
+            attemptCount = 0;
+            result.innerHTML = "<p class='incorrect'>Incorrect. You have no attempts left.</p>";
+            if (timerRunning) {
+                stopTimer();
+            }
+            return false;
+        } else {
+          //  attemptsLeft.textContent = attemptCount + " attempts left";
+            result.innerHTML = "<p class='incorrect'>Incorrect. You have " + attemptCount + "nd attempts left. Please try again.</p>";
+            document.getElementById("answer").value = "";
+            return false;
+        }
+    }
+	return false;
+}
+function startTimer() {
+    if (!timerRunning) {
+        timer = setInterval(updateTimer, 1000);
+        timerRunning = true;
+    }
+}
+function updateTimer() {
+    var minutes = Math.floor(time / 60);
+    var seconds = time % 60;
+    document.getElementById("timer").innerHTML = "Time Taken: " + minutes + " minutes " + seconds + " seconds";
+    time++;
+}
+function stopTimer() {
+    clearInterval(timer);
+    timerRunning = false;
+}
+function goToNextStage() {
+    window.location.href = "{% url 'stage3'%}";
+}
+window.onload = function() {
+    var attemptsLeft = document.getElementById("attemptsLeft");
+    attemptsLeft.textContent = maxAttempts + " attempts left";
+    startTimer();
+};
+	</script>
+</body>
+</html>

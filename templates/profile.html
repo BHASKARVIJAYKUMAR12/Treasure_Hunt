@@ -1,0 +1,85 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="path/to/style.css">
+  </head>
+  <style>
+    .container {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  max-width: 600px;
+}
+
+h1 {
+  font-size: 36px;
+  color: #333;
+}
+
+p {
+  font-size: 18px;
+  color: #666;
+}
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #333;
+
+}
+    .navbar li {
+      float: right; /* Align items to the left */
+    }
+
+    .navbar li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .navbar li a:hover {
+      background-color: #111;
+    }
+    .navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+    .main-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+  </style>
+  <body>
+    <nav class="navbar">
+        <ul>
+          <li><a href="{% url 'logout' %}">Log Out</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <li><a href="{% url 'home' %}">Home</a></li>
+        </ul>
+      </nav>
+    {% block content %}
+    <div class="container">
+      <h1>Welcome to your profile, {{ data.name }}!</h1>
+      <p>Email: {{ data.email }}</p>
+      <li class="center"><a href="{% url 'stage1' %}" class="main-btn">Start Game</a></li>
+
+      <!-- Add more data here -->
+    </div>
+    {% endblock %}
+  </body>
+</html>

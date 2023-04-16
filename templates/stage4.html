@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Stage-4</title>
+  </head>
+  <style> 
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.passage {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+#result {
+  margin-top: 20px;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+#nextBtn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 12px 24px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#nextBtn:hover {
+  background-color: #3e8e41;
+}
+.form input,
+.form button {
+  display: inline-block;
+  vertical-align: middle;
+}
+h4 {
+  text-align: center;
+}
+label, input,button{
+         display: inline-block;
+        }
+input[type="text"] {
+  width: 200px; /* set width as needed */
+}
+#submit {
+  display: block;
+  margin: 10px auto;
+}
+
+
+  </style>
+  <body onload="startTimer()">
+    <div class="container">
+      <h4>Stage 4 - Visual Skills</h4>
+      <p>Here's the passage:</p>
+      <div class="passage">
+        <p>Many mountaineers dream of scaling the world's highest peak.<br>
+            Often called the "Roof of the World," Mount Everest stands at 29,029 feet tall.<br>
+            Unpredictable weather patterns and dangerous terrain make the climb exceedingly difficult.<br>
+            Navigating the Khumbu Icefall and crossing the Hillary Step are just two of the many challenges that climbers must face.<br>
+            The Sherpa people, who are native to the region, are integral to many expeditions and provide invaluable support to climbers.<br>
+            Experienced guides and high-quality equipment are essential for a successful summit attempt.<br>
+            Reaching the summit of Mount Everest is a remarkable feat of endurance and perseverance.<br>
+            Everest Base Camp serves as a staging ground for many climbers, and offers stunning views of the surrounding Himalayas.<br>
+            Scaling Mount Everest is not without risks, and climbers must be prepared for emergencies and difficult decisions.<br>
+            The allure of Mount Everest draws adventurers from all over the world, each with their own personal reasons for taking on the challenge.</p>
+      </div>
+      <form onsubmit="return checkAnswer()">
+        <div class="form">
+        <label for="answer">Enter your answer: Only Capitals allowed</label>
+        <input type="text" id="answer" name="answer">
+        <button type="submit" id="submit">Submit</button>
+        </div>
+        <button id="nextBtn" onclick="goToNextStage()">Next Stage</button>
+      </form>
+      <div id="result">
+    <div id="stage4">
+        <p><span id="timer"></p>
+<p><span id="attemptsLeft"></span></p>
+<p><span id="submit"></span></p>
+    </div>
+      </div>
+    <script>
+        var attempts = 0;
+var maxAttempts = 1;
+var timer = null;
+var time = 0;
+var timerRunning = false;
+
+function checkAnswer() {
+    attempts++;
+    var answer = document.getElementById("answer");
+    var result = document.getElementById("result");
+    var attemptsLeft = document.getElementById("attemptsLeft");
+    var attemptCount = maxAttempts - attempts + 1;
+    if (answer.value === "MOUNT EVEREST") {
+        result.innerHTML = "<p class='correct'>Correct! You may proceed to the next stage.</p>";
+        document.getElementById("nextBtn").style.display = "block";
+        if (timerRunning) {
+            stopTimer();
+        }
+        return false;
+    } else {
+        if (attempts >= maxAttempts) {
+            attemptCount = 0;
+            result.innerHTML = "<p class='incorrect'>Incorrect. You have no attempt left.</p>";
+            if (timerRunning) {
+                stopTimer();
+            }
+            return false;
+        } else {
+          //  attemptsLeft.textContent = attemptCount + " attempts left";
+            result.innerHTML = "<p class='incorrect'>Incorrect. You have " + attemptCount + "nd attempt left. Please try again.</p>";
+            document.getElementById("answer").value = "";
+            return false;
+        }
+    }
+    return false;
+}
+
+function startTimer() {
+    if (!timerRunning) {
+        timer = setInterval(updateTimer, 1000);
+        timerRunning = true;
+    }
+}
+
+function updateTimer() {
+    var minutes = Math.floor(time / 60);
+    var seconds = time % 60;
+    document.getElementById("timer").innerHTML = "Time Taken: " + minutes + " minutes " + seconds + " seconds";
+    time++;
+}
+
+function stopTimer() {
+    clearInterval(timer);
+    timerRunning = false;
+}
+
+function goToNextStage() {
+    window.location.href = "{% url 'stage5' %}";
+}
+
+window.onload = function() {
+    var attemptsLeft = document.getElementById("attemptsLeft");
+    attemptsLeft.textContent = "Only "+ maxAttempts + " attempt ";
+    startTimer();
+};
+    </script>
+  </body>
+</html>
