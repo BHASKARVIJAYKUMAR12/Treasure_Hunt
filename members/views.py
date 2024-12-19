@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.decorators import login_required
-from datetime import datetimedatetimedatetimedatetime
+from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 #from django.http import HttpResponse
 #from django.template import loader
